@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>hello security</title>
+</head>
+<body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form action="/logout" method="post">
+    <input type="hidden"
+           th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="submit" value="Log Out">
+
+    // alempi koodi hakee myös käyttäjänimen
+    <p>Hello, <span th:text="${
+    T(org.springframework.security.core.context.SecurityContextHolder)
+      .context.authentication.principal.username}"></span>!</p>
+</form>
+</body>
+</html>
