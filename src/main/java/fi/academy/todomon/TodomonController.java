@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TodomonController {
 
+    private int currentUserId;
+
+    
+
     @Autowired
     private UsersRepository repo;
 
