@@ -1,0 +1,7 @@
+users- @onetomany, mapped by 'user'
+
+-lista taskeista
+
+
+tasks: many to one, fetch type ehkä
+@JoinColumn(name = user_id)

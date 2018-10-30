@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Testisivu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Todomon get</h1>
+
+    <div class = "todoLista">
+            <table class="table table-bordered table-striped" id="todoItems">
+                <thead>
+                <tr>
+                    <th>Taskinumero</th>
+                    <th>Taskin nimi</th>
+                    <th>User</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${todomonLista}">
+                    <td th:text="${itemStat.count}"></td>
+                    <td th:text="${item.task}"></td>
+                    <td th:text="${item.users.getUsername()}"></td>
+
+                </tr>
+                </tbody>
+            </table>
+    </div>
+
+    <hr/>
+
+</div>
+
+<!-- Nämä täällä koska page load -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
+
+</body>
+</html>
