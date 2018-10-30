@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todomon</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/draggabilly.pkgd.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="tyylit.css" th:href="@{/css/style.css}"/>
+</head>
+<body class="container-fluid d-flex flex-column grow">
+
+<!-- TODO: YLÄPALKKI TÄHÄN -->
+
+
+<!-- TODO: TODOMONIN KUVA TÄHÄN, KUVAN RESPONSIIVISUUS -->
+<img src="#" alt="todomon" class="img-responsive img-rounded" th:src="@{'/images/temp.jpg'}"/>
+
+<!-- TODO: LEVEL-PALKKI TÄHÄN -->
+
+<!-- TODO: (KESKEN) BOKSIT JA DRAGATTAVAT ASIAT - 3+1 -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">TO DO</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">DOING</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">DONE</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">FUTURE TASKS</div>
+    <div class="panel-body">Panel Content</div>
+</div>
+
+<div class="todo-box">
+    <div class="slide">slide1</div>
+    <div class="slide">slide2</div>
+    <div class="slide">slide3</div>
+    <div class="slide">slide4</div>
+    <div class="slide">slide5</div>
+    <div class="slide">slide6</div>
+    <div class="slide">slide7</div>
+    <div class="slide">slide8</div>
+    <div class="slide">slide9</div>
+    <div class="slide">slide0</div>
+    <div class="slide">slide0</div>
+    <div class="slide">slide0</div>
+    <div class="slide">slide0</div>
+</div>
+
+<div class="doing-box">
+    <div class="slide">slide1</div>
+    <div class="slide">slide2</div>
+    <div class="slide">slide3</div>
+</div>
+
+<div class="done-box">
+    <div class="slide">slide1</div>
+    <div class="slide">slide2</div>
+    <div class="slide">slide3</div>
+</div>
+
+<!-- TODO: LISÄÄ UUSI -NAPPI -->
+
+<input type="button" value="Add task!" onclick="window.location.href='add.html'" />
+
+<div class="pool-box">
+    <div class="slide">slide1</div>
+    <div class="slide">slide2</div>
+    <div class="slide">slide3</div>
+</div>
+
+<!-- draggabilly kokeilu:
+
+<!-- media object kokeilu: https://www.w3schools.com/bootstrap/bootstrap_media_objects.asp -->
+<!-- Left-aligned -->
+<div class="media">
+    <div class="media-left">
+        <img src="#" alt="pienikuva" class="media-object" style="width:60px" th:src="@{'/images/flame.png'}">
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">John Doe</h4>
+        <p>Lorem ipsum...</p>
+    </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+</body>
+</html>
