@@ -47,6 +47,5 @@ public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuc
         }
 
     }
-    Authentication tunnistus = SecurityContextHolder.getContext().getAuthentication();
-  //  AuthenticationPrincipal
+
 }

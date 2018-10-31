@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todomon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+<div class="todomonSignUp">
+    <h1>Luo käyttäjätili</h1>
+    <div class="signup">
+        <form class="form-signup" th:action="@{/luokayttaja}" method="POST">
+            <div class="form-group">
+                <label for="inputUsername" class="col-sm-2">Luo tunnus</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{username}" class="form-control" id="inputUsername" placeholder="Kayttajatunnus"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-2">Taskin kuvaus</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{password}" class="form-control" id="inputPassword" placeholder="Salasana"/>
+                </div>
+            </div>
+
+            <button type="submit" class="signup-button">Luo käyttäjätili</button>
+
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
+</body>
+</html>

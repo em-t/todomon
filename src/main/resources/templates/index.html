@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Testisivu</title>
+    <title>Todomon</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-    <h1>Todomon pool</h1>
+    <h1>Todomon pool(0)</h1>
 
     <div class = "todoPool">
             <table class="table table-bordered table-striped" id="todoPoolItems">
@@ -25,7 +25,7 @@
 </tr>
 </thead>
 <tbody>
-<tr th:each="item : ${todomonpool}">
+<tr th:each="item : ${todomonpool0}">
 <td th:text="${itemStat.count}"></td>
 <td th:text="${item.task}"></td>
 <td th:text="${item.description}"></td>
@@ -39,9 +39,67 @@
 
 </div>
 
+    <hr/>
+
+    <h1>Todomon ToDo(1)</h1>
+
+    <div class = "toDoLista">
+        <table class="table table-bordered table-striped" id="todoItems">
+            <thead>
+            <tr>
+                <th>Taskinumero</th>
+                <th>Taskin nimi</th>
+                <th>Taskin desc</th>
+                <th>Taskin kategoria</th>
+                <th>Taskin luoja</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${todo1}">
+                <td th:text="${itemStat.count}"></td>
+                <td th:text="${item.task}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.category}"></td>
+                <td th:text="${item.users.getUsername()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <hr/>
+
+    <h1>Todomon in progress(2)</h1>
+
+    <div class = "doingLista">
+        <table class="table table-bordered table-striped" id="progressItems">
+            <thead>
+            <tr>
+                <th>Taskinumero</th>
+                <th>Taskin nimi</th>
+                <th>Taskin desc</th>
+                <th>Taskin kategoria</th>
+                <th>Taskin luoja</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${inprogress2}">
+                <td th:text="${itemStat.count}"></td>
+                <td th:text="${item.task}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.category}"></td>
+                <td th:text="${item.users.getUsername()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
 <hr/>
 
-    <h1>Todomon done-lista</h1>
+    <h1>Todomon done</h1>
 
     <div class = "doneLista">
         <table class="table table-bordered table-striped" id="doneItems">
@@ -55,7 +113,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item : ${donelista}">
+            <tr th:each="item : ${donelista3}">
                 <td th:text="${itemStat.count}"></td>
                 <td th:text="${item.task}"></td>
                 <td th:text="${item.description}"></td>
@@ -69,11 +127,10 @@
     </div>
 
 
-
 <div class="todomonAdd">
 <h1>Todomon add</h1>
 <div class="todoForm">
-<form class="form-horizontal" th:action="@{/luotaski}" th:object="${newitem}" method="POST">
+<form class="form-put" th:action="@{/luotaski}" th:object="${newitem}" method="POST">
 <div class="form-group">
 <label for="inputItemName" class="col-sm-2">Taskin nimi</label>
 <div class="col-sm-10">
@@ -88,17 +145,27 @@
 </div>
 
 <div class="form-group">
-<label for="inputItemCategory" class="col-sm-2">Taskin kategoria</label>
+<label for="inputCategory" class="col-sm-2">Taskin kategoria</label>
 <div class="col-sm-10">
-    <input type="text" th:field="*{category}" class="form-control" id="inputItemCategory" placeholder="Taskin kategoria"/>
+    <input type="text" th:field="*{category}" class="form-control" id="inputCategory" placeholder="Taskin kategoria"/>
 </div>
 </div>
 
-<button type="submit" class="btn btn-primary">Lisää taski</button>
+<button type="submit" class="put-button">Lisää taski</button>
 
 </form>
 </div>
 </div>
+
+
+    <div class="todomonDel">
+        <h1>Todomon remove</h1>
+        <form class="form-delete" th:action="@{/poistataski}" th method="DELETE" placeholder="Poista roskat">
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit" id="deleteButton">Delli neloset</button>
+        </form>
+    </div>
+
 
 </div>
 
