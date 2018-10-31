@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Testisivu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Todomon get</h1>
+
+    <div class = "todoLista">
+            <table class="table table-bordered table-striped" id="todoItems">
+                <thead>
+                <tr>
+                    <th>Taskinumero</th>
+                    <th>Taskin nimi</th>
+                    <th>Taskin desc</th>
+                    <th>Taskin kategoria</th>
+                    <!--/*
+
+                    <th>Käyttäjä(placeholder)</th>/*/-->
+</tr>
+</thead>
+<tbody>
+<tr th:each="item : ${todomonLista}">
+<td th:text="${itemStat.count}"></td>
+<td th:text="${item.task}"></td>
+<td th:text="${item.description}"></td>
+<td th:text="${item.category}"></td>
+    <!--/*
+<td th:text="${item.users.getUsername()}"></td>
+    /*/-->
+
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<hr/>
+
+
+<div class="todomonAdd">
+<h1>Todomon add</h1>
+<div class="todoForm">
+<form class="form-horizontal" th:action="@{/luotaski}" th:object="${newitem}" method="POST">
+<div class="form-group">
+<label for="inputItemName" class="col-sm-2">Taskin nimi</label>
+<div class="col-sm-10">
+    <input type="text" th:field="*{task}" class="form-control" id="inputItemName" placeholder="Taskin nimi"/>
+</div>
+</div>
+<div class="form-group">
+<label for="inputDescription" class="col-sm-2">Taskin kuvaus</label>
+<div class="col-sm-10">
+    <input type="text" th:field="*{description}" class="form-control" id="inputDescription" placeholder="Taskin nimi"/>
+</div>
+</div>
+
+<div class="form-group">
+<label for="inputItemCategory" class="col-sm-2">Taskin kategoria</label>
+<div class="col-sm-10">
+    <input type="text" th:field="*{category}" class="form-control" id="inputItemCategory" placeholder="Taskin kategoria"/>
+</div>
+</div>
+
+<button type="submit" class="btn btn-primary">Lisää taski</button>
+
+</form>
+</div>
+</div>
+
+</div>
+
+<!-- Nämä täällä koska page load -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
+
+</body>
+</html>

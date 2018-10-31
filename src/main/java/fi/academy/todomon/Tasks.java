@@ -4,20 +4,42 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "tasks")
 public class Tasks {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
-    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
+  //  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tasks_id_seq")
+   // @SequenceGenerator(name = "tasks_id_seq", sequenceName = "tasks_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String task;
     private String description;
-    private Integer userId; //foreign key, lisää linkitys
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public Users users;
+    //private Integer userId; //foreign key
+
+
     private Date due;
     private Integer rank; //taskin vaikeus
     private Integer state; //esim. todo, doing, done
     private String category;
 
+    //constructor simple formille
+    public Tasks(String task, String description, String category) {
+        this.task = task;
+        this.description = description;
+        this.category = category;
+    }
+
+    //väliaikainen toString että saa edes jotain näkymään
+    @Override
+    public String toString() {
+        return String.format(
+                "Tasks[task=%d, description='%s', category='%s']",
+                task, description, category);
+    }
 
     public Integer getId() {
         return id;
@@ -43,14 +65,22 @@ public class Tasks {
         this.description = description;
     }
 
-    public Integer getUserId() {
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+ /*   public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
+*/
     public Date getDue() {
         return due;
     }
@@ -83,10 +113,10 @@ public class Tasks {
         this.category = category;
     }
 
-    public Tasks(String task, String description, Integer userId, Date due, Integer rank, Integer state, String category) {
+    public Tasks(String task, String description, Users users, Date due, Integer rank, Integer state, String category) {
         this.task = task;
         this.description = description;
-        this.userId = userId;
+        this.users = users;
         this.due = due;
         this.rank = rank;
         this.state = state;
@@ -95,5 +125,7 @@ public class Tasks {
 
     public Tasks() {
     }
+
+
 }
 

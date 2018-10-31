@@ -1,19 +1,35 @@
 package fi.academy.todomon;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "users_id_seq")
-//    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
+   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
+    // @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+   @OneToMany(mappedBy = "users")
+    public List<Tasks> tasks;
+
     private String username;
     private String password;
     private Integer level;
     private Integer mon; //todomonin type
+
+    public Users(List<Tasks> tasks, String username, String password, Integer level, Integer mon) {
+        this.tasks = tasks;
+        this.username = username;
+        this.password = password;
+        this.level = level;
+        this.mon = mon;
+    }
+
+    public Users() {
+    }
 
     public Integer getId() {
         return id;
@@ -21,6 +37,14 @@ public class Users {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<Tasks> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Tasks> tasks) {
+        this.tasks = tasks;
     }
 
     public String getUsername() {
@@ -53,15 +77,5 @@ public class Users {
 
     public void setMon(Integer mon) {
         this.mon = mon;
-    }
-
-    public Users(String username, String password, Integer level, Integer mon) {
-        this.username = username;
-        this.password = password;
-        this.level = level;
-        this.mon = mon;
-    }
-
-    public Users() {
     }
 }
