@@ -11,11 +11,10 @@ public class Users {
    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     // @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String username;
    @OneToMany(mappedBy = "users")
     public List<Tasks> tasks;
 
-    private String username;
     private String password;
     private Integer level;
     private Integer mon; //todomonin type
@@ -31,12 +30,9 @@ public class Users {
     public Users() {
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Users(String username, String password) {
+        this.username = username;
+        this.username = password;
     }
 
     public List<Tasks> getTasks() {

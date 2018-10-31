@@ -28,12 +28,12 @@ public class TodomonController {
 
     @RequestMapping(value = "/user")
     public String user() {
-        return "annintesti";
+        return "index";
     }
 
     @RequestMapping(value = "/admin")
     public String admin() {
-        return "annintesti";
+        return "adminpage";
     }
 
     @RequestMapping(value = "/login")
@@ -46,7 +46,7 @@ public class TodomonController {
         return "403";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/main")
     public String paasivu(Model model) {
         Iterable<Tasks> taskit;
             taskit = taskRepo.findAll();

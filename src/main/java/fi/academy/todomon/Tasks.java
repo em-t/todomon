@@ -16,9 +16,9 @@ public class Tasks {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "username")
     public Users users;
-    //private Integer userId; //foreign key
+    //private String username //foreign key
 
 
     private Date due;
