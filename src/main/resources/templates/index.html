@@ -10,30 +10,27 @@
 <body>
 
 <div class="container">
-    <h1>Todomon get</h1>
+    <h1>Todomon pool</h1>
 
-    <div class = "todoLista">
-            <table class="table table-bordered table-striped" id="todoItems">
+    <div class = "todoPool">
+            <table class="table table-bordered table-striped" id="todoPoolItems">
                 <thead>
                 <tr>
                     <th>Taskinumero</th>
                     <th>Taskin nimi</th>
                     <th>Taskin desc</th>
                     <th>Taskin kategoria</th>
-                    <!--/*
+                    <th>Taskin luoja</th>
 
-                    <th>Käyttäjä(placeholder)</th>/*/-->
 </tr>
 </thead>
 <tbody>
-<tr th:each="item : ${todomonLista}">
+<tr th:each="item : ${todomonpool}">
 <td th:text="${itemStat.count}"></td>
 <td th:text="${item.task}"></td>
 <td th:text="${item.description}"></td>
 <td th:text="${item.category}"></td>
-    <!--/*
-<td th:text="${item.users.getUsername()}"></td>
-    /*/-->
+    <td th:text="${item.users.getUsername()}"></td>
 
 </tr>
 </tbody>
@@ -43,6 +40,34 @@
 </div>
 
 <hr/>
+
+    <h1>Todomon done-lista</h1>
+
+    <div class = "doneLista">
+        <table class="table table-bordered table-striped" id="doneItems">
+            <thead>
+            <tr>
+                <th>Taskinumero</th>
+                <th>Taskin nimi</th>
+                <th>Taskin desc</th>
+                <th>Taskin kategoria</th>
+                <th>Taskin luoja</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${donelista}">
+                <td th:text="${itemStat.count}"></td>
+                <td th:text="${item.task}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.category}"></td>
+                <td th:text="${item.users.getUsername()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
 
 
 <div class="todomonAdd">

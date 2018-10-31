@@ -8,17 +8,20 @@ package fi.academy.todomon;
         import org.springframework.web.bind.annotation.RequestMapping;
         import java.util.ArrayList;
         import java.util.Date;
+        import java.security.Principal;
 
 @Controller
 public class TodomonController {
 
+    private CustomizedAuthenticationSuccessHandler userhandler;
     private UsersRepository usersRepo;
     private TasksRepository taskRepo;
 
     @Autowired
-    public TodomonController(UsersRepository usersRepo, TasksRepository taskRepo) {
+    public TodomonController(UsersRepository usersRepo, TasksRepository taskRepo, CustomizedAuthenticationSuccessHandler userhandler) {
         this.usersRepo = usersRepo;
         this.taskRepo = taskRepo;
+        this.userhandler = userhandler;
     }
 
     @RequestMapping(value = "/")
@@ -28,12 +31,12 @@ public class TodomonController {
 
     @RequestMapping(value = "/user")
     public String user() {
-        return "annintesti";
+        return "index";
     }
 
     @RequestMapping(value = "/admin")
     public String admin() {
-        return "annintesti";
+        return "adminpage";
     }
 
     @RequestMapping(value = "/login")
@@ -46,12 +49,15 @@ public class TodomonController {
         return "403";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/main")
     public String paasivu(Model model) {
-        Iterable<Tasks> taskit;
-            taskit = taskRepo.findAll();
+            Iterable<Tasks> taskipool;
+            taskipool = taskRepo.findByStateEquals(0);
+            Iterable <Tasks> tehdytTaskit;
+            tehdytTaskit = taskRepo.findByStateEquals(3);
         model.addAttribute("newitem", new Tasks()); //paikka uudelle taskille, joka tulee formista
-        model.addAttribute("todomonLista", taskit);
+        model.addAttribute("todomonpool", taskipool);
+        model.addAttribute("donelista", tehdytTaskit);
         return "index";
     }
 
@@ -61,7 +67,7 @@ public class TodomonController {
     public String luoUusiTask(@ModelAttribute Tasks requestItem) {
         Tasks taski = new Tasks(requestItem.getTask(), requestItem.getDescription(), requestItem.getCategory());
         taskRepo.save(taski);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     /*taskin siirto toiseen lis taan. Tämän voisi tehdä myös booleanilla + checkbox?
