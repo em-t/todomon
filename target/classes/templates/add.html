@@ -10,13 +10,9 @@
 </head>
 <body>
 
-
-
-<h1>Lomake</h1>
-<form th:class="form-horizontal" action="#"  method="post">
-
-</form>
-
+<div th:each="task : ${tasks3}">
+    <p th:text="${task.nimi}"></p>
+</div>
 
 
 </body>

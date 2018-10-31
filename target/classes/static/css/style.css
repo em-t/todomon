@@ -125,3 +125,7 @@ body {
     min-height: 100px;
     padding: 10px;
 }
+
+h2 {
+    font-family: 'Concert One', cursive;
+}

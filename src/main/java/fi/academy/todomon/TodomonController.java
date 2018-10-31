@@ -19,19 +19,12 @@ public class TodomonController {
 
 
     // ============ emmun testausmetodit ============
-    @GetMapping("/main")
-    public String etusivuTestaus() {
-        return "main";
-    }
-
-    @GetMapping("/add")
-    public String lisaysTestaus() {
-        return "add";
-    }
 
     @GetMapping("/test")
     public String etusivu() {
         return "testindex";
     }
+
+
 }
 
