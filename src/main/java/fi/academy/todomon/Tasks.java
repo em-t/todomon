@@ -17,7 +17,6 @@ public class Tasks {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    //@MapsId
     public Users users;
     //private Integer userId; //foreign key
 
@@ -26,6 +25,21 @@ public class Tasks {
     private Integer rank; //taskin vaikeus
     private Integer state; //esim. todo, doing, done
     private String category;
+
+    //constructor simple formille
+    public Tasks(String task, String description, String category) {
+        this.task = task;
+        this.description = description;
+        this.category = category;
+    }
+
+    //väliaikainen toString että saa edes jotain näkymään
+    @Override
+    public String toString() {
+        return String.format(
+                "Tasks[task=%d, description='%s', category='%s']",
+                task, description, category);
+    }
 
     public Integer getId() {
         return id;
@@ -111,5 +125,7 @@ public class Tasks {
 
     public Tasks() {
     }
+
+
 }
 
