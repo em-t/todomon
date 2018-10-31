@@ -8,8 +8,8 @@ import java.util.Date;
 public class Tasks {
 
     @Id
-  //  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tasks_id_seq")
-   // @SequenceGenerator(name = "tasks_id_seq", sequenceName = "tasks_id_seq", allocationSize = 1)
+    //  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tasks_id_seq")
+    // @SequenceGenerator(name = "tasks_id_seq", sequenceName = "tasks_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String task;
@@ -18,7 +18,7 @@ public class Tasks {
     @ManyToOne
     @JoinColumn(name = "username")
     public Users users;
-    //private String username //foreign key
+    //private Integer userId; //foreign key
 
 
     private Date due;
@@ -73,14 +73,14 @@ public class Tasks {
         this.users = users;
     }
 
- /*   public Integer getUserId() {
-        return userId;
-    }
+    /*   public Integer getUserId() {
+           return userId;
+       }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-*/
+       public void setUserId(Integer userId) {
+           this.userId = userId;
+       }
+   */
     public Date getDue() {
         return due;
     }
@@ -128,4 +128,3 @@ public class Tasks {
 
 
 }
-

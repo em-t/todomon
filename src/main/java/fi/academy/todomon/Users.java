@@ -8,31 +8,23 @@ import java.util.List;
 public class Users {
 
     @Id
-   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
+    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     // @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String username;
-   @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users")
     public List<Tasks> tasks;
 
     private String password;
     private Integer level;
     private Integer mon; //todomonin type
 
-    public Users(List<Tasks> tasks, String username, String password, Integer level, Integer mon) {
-        this.tasks = tasks;
-        this.username = username;
-        this.password = password;
-        this.level = level;
-        this.mon = mon;
+    public String getUsername() {
+        return username;
     }
 
-    public Users() {
-    }
-
-    public Users(String username, String password) {
+    public void setUsername(String username) {
         this.username = username;
-        this.username = password;
     }
 
     public List<Tasks> getTasks() {
@@ -41,14 +33,6 @@ public class Users {
 
     public void setTasks(List<Tasks> tasks) {
         this.tasks = tasks;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -74,4 +58,9 @@ public class Users {
     public void setMon(Integer mon) {
         this.mon = mon;
     }
+
+    public Users() {
+    }
+
+
 }
