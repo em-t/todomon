@@ -1,6 +1,8 @@
 package fi.academy.todomon;
 
         import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.security.core.context.SecurityContextHolder;
+        import org.springframework.security.core.userdetails.UserDetails;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +10,7 @@ package fi.academy.todomon;
         import org.springframework.web.bind.annotation.RequestMapping;
         import java.util.ArrayList;
         import java.util.Date;
+        import java.util.Optional;
 
 @Controller
 public class TodomonController {
@@ -26,14 +29,9 @@ public class TodomonController {
         return "home";
     }
 
-    @RequestMapping(value = "/user")
-    public String user() {
-        return "annintesti";
-    }
-
     @RequestMapping(value = "/admin")
     public String admin() {
-        return "annintesti";
+        return "adminpage";
     }
 
     @RequestMapping(value = "/login")
@@ -46,22 +44,39 @@ public class TodomonController {
         return "403";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/main")
     public String paasivu(Model model) {
+        String username = getCurrentUsername();
+        Optional<Users> optUser = usersRepo.findById(username);
+        Users user = optUser.get();
         Iterable<Tasks> taskit;
-            taskit = taskRepo.findAll();
-        model.addAttribute("newitem", new Tasks()); //paikka uudelle taskille, joka tulee formista
+        taskit = taskRepo.findByUsers(user);
+        model.addAttribute("newitem", new Tasks());
         model.addAttribute("todomonLista", taskit);
         return "index";
     }
 
-    //uuden taskin lisäys listaan:
-    //usernamen haku uudelle taskille kusee toistaiseksi
     @PostMapping("/luotaski")
     public String luoUusiTask(@ModelAttribute Tasks requestItem) {
         Tasks taski = new Tasks(requestItem.getTask(), requestItem.getDescription(), requestItem.getCategory());
+        String username = getCurrentUsername();
+        Optional<Users> optUser = usersRepo.findById(username);
+        Users user = optUser.get();
+        taski.setUsers(user);
         taskRepo.save(taski);
-        return "redirect:/";
+        return "redirect:/main";
+    }
+
+    public String getCurrentUsername() {
+
+        String username = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+       return username;
     }
 
     /*taskin siirto toiseen lis taan. Tämän voisi tehdä myös booleanilla + checkbox?
@@ -71,7 +86,6 @@ public class TodomonController {
     public String siirraTaskia(@ModelAttribute JOTAIN){
     }
     */
-
-    // Käyttäjähallinta & autentikointi
+    
 
 }

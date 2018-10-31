@@ -3,13 +3,14 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>hello security</title>
+    <title>hello admins</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
 <h1 th:text="'Hello ' + ${T(org.springframework.security.core.context.SecurityContextHolder)
       .context.authentication.principal.username} + '!'"></h1>
+<p>Tervetuloa supersalaiselle admin-sivulle! Tänne ei peruskäyttäjillä ole asiaa.</p>
 <form action="/logout" method="post">
     <input type="hidden"
            th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
