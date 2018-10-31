@@ -75,7 +75,7 @@ public class TodomonController {
         Users user = optUser.get();
         taski.setUsers(user);
         taskRepo.save(taski);
-        return "redirect:/index";
+        return "redirect:/main";
     }
 
     /*taskin siirto toiseen lis taan. Tämän voisi tehdä myös booleanilla + checkbox?
