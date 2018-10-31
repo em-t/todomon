@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface TasksRepository extends CrudRepository<Tasks, Integer> {
 
+
     List<Tasks> findByStateEquals(Integer state);
     List<Tasks> findAllByUsers(String username);
+
+    Iterable<Tasks> findByUsers(Users user);
+
 }
