@@ -29,11 +29,6 @@ public class TodomonController {
         return "home";
     }
 
-//    @RequestMapping(value = "/user")
-//    public String user() {
-//        return "index";
-//    }
-
     @RequestMapping(value = "/admin")
     public String admin() {
         return "adminpage";
@@ -51,31 +46,37 @@ public class TodomonController {
 
     @RequestMapping("/main")
     public String paasivu(Model model) {
+        String username = getCurrentUsername();
+        Optional<Users> optUser = usersRepo.findById(username);
+        Users user = optUser.get();
         Iterable<Tasks> taskit;
-        // hakee nyt kaikki taskit käyttäjästä riippumatta! muokkaa queryä
-            taskit = taskRepo.findAll();
-        model.addAttribute("newitem", new Tasks()); //paikka uudelle taskille, joka tulee formista
+        taskit = taskRepo.findByUsers(user);
+        model.addAttribute("newitem", new Tasks());
         model.addAttribute("todomonLista", taskit);
         return "index";
     }
 
-    //uuden taskin lisäys listaan:
-    //usernamen haku uudelle taskille kusee toistaiseksi
     @PostMapping("/luotaski")
     public String luoUusiTask(@ModelAttribute Tasks requestItem) {
-        String username = null;
         Tasks taski = new Tasks(requestItem.getTask(), requestItem.getDescription(), requestItem.getCategory());
+        String username = getCurrentUsername();
+        Optional<Users> optUser = usersRepo.findById(username);
+        Users user = optUser.get();
+        taski.setUsers(user);
+        taskRepo.save(taski);
+        return "redirect:/main";
+    }
+
+    public String getCurrentUsername() {
+
+        String username = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             username = ((UserDetails)principal).getUsername();
         } else {
             username = principal.toString();
         }
-        Optional<Users> optUser = usersRepo.findById(username);
-        Users user = optUser.get();
-        taski.setUsers(user);
-        taskRepo.save(taski);
-        return "redirect:/main";
+       return username;
     }
 
     /*taskin siirto toiseen lis taan. Tämän voisi tehdä myös booleanilla + checkbox?
@@ -85,7 +86,6 @@ public class TodomonController {
     public String siirraTaskia(@ModelAttribute JOTAIN){
     }
     */
-
-
+    
 
 }
