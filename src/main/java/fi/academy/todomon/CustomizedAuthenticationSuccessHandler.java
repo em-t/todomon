@@ -1,4 +1,5 @@
-package fi.academy.todomon.config;
+package fi.academy.todomon;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -19,25 +20,29 @@ public class CustomizedAuthenticationSuccessHandler implements AuthenticationSuc
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response, Authentication authentication)
-            throws IOException, ServletException {
-        //set our response to OK status
-        response.setStatus(HttpServletResponse.SC_OK);
+                                        HttpServletResponse response, Authentication authentication) {
+        try {
 
-        boolean admin = false;
+            response.setStatus(HttpServletResponse.SC_OK);
 
-        logger.info("AT onAuthenticationSuccess(...) function!");
+            boolean admin = false;
 
-        for (GrantedAuthority auth : authentication.getAuthorities()) {
-            if ("ROLE_ADMIN".equals(auth.getAuthority())){
-                admin = true;
+            logger.info("AT onAuthenticationSuccess(...) function!");
+
+            for (GrantedAuthority auth : authentication.getAuthorities()) {
+                if ("ROLE_ADMIN".equals(auth.getAuthority())) {
+                    admin = true;
+                }
             }
+
+            if (admin) {
+                response.sendRedirect("/admin");
+            } else {
+                response.sendRedirect("/user");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        if(admin){
-            response.sendRedirect("/admin");
-        }else{
-            response.sendRedirect("/user");
-        }
     }
 }

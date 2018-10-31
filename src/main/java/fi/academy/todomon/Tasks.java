@@ -10,15 +10,12 @@ public class Tasks {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
     private Integer id;
-    @Lob
     private String task;
-    @Lob
     private String description;
     private Integer userId; //foreign key, lisää linkitys
     private Date due;
     private Integer rank; //taskin vaikeus
     private Integer state; //esim. todo, doing, done
-    @Lob
     private String category;
 
 
