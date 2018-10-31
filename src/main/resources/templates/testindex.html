@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todomon</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js" th:src="@{/js/scripts.js}"></script>
+    <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+<div class="grid-container-outer">
+
+    <div class="grid-container-navbar">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Todomon</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Current Tasks</a></li>
+                    <li><a href="#">Stats</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="grid-container-todomon-image">
+        <img src="#" alt="todomon" class="img-responsive img-rounded" th:src="@{'/images/temp.jpg'}"/>
+    </div>
+
+    <div class="grid-container-todo-boxes">
+        <div class="todo-box grid-todo-box">
+            <div class="todo-box-header">
+                <h2>TO DO</h2>
+            </div>
+            <div id="todo-box" class="todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+
+            </div>
+        </div>
+        <div class="doing-box grid-doing-box">
+            <div class="todo-box-header">
+                <h2>DOING</h2>
+            </div>
+            <div id="doing-box" class="todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+
+            </div>
+        </div>
+        <div class="done-box grid-done-box">
+            <div class="todo-box-header">
+                <h2>DONE</h2>
+            </div>
+            <div id="done-box" class="todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-container-task-pool">
+        <div class="pool-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <p id="task1" draggable="true" ondragstart="dragstart_handler(event);">Task 1</p>
+            <p id="task2" draggable="true" ondragstart="dragstart_handler(event);">Task 2</p>
+            <p id="task3" draggable="true" ondragstart="dragstart_handler(event);">Task 3</p>
+            <p id="task4" draggable="true" ondragstart="dragstart_handler(event);">Task 4</p>
+        </div>
+    </div>
+
+    <div class="grid-container-add-form">
+        <p>Taskin lisäys tulee tähän!<br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam neque leo,
+            blandit id eros eget, cursus iaculis eros. Maecenas ut augue ex. Nulla lobortis odio fermentum, tempor dui
+            in, ornare enim. Donec ac fermentum purus, hendrerit ullamcorper ante. Praesent suscipit nisi sed nisl
+            gravida lacinia. Cras placerat diam interdum tempus consectetur. Quisque laoreet elit vel luctus
+            consectetur. In hac habitasse platea dictumst. Nunc vestibulum sollicitudin velit. Vestibulum ante ipsum
+            primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer vitae tristique ante. Etiam
+            eleifend tempor quam vel accumsan. Nullam nibh velit, aliquam eu iaculis eu, laoreet a ligula. Ut lacinia
+            felis ut tincidunt efficitur.</p>
+    </div>
+
+</div>
+</body>
+</html>

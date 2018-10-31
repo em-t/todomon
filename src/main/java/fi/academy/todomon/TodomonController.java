@@ -28,5 +28,10 @@ public class TodomonController {
     public String lisaysTestaus() {
         return "add";
     }
+
+    @GetMapping("/test")
+    public String etusivu() {
+        return "testindex";
+    }
 }
 
