@@ -6,7 +6,6 @@ package fi.academy.todomon;
         import org.springframework.web.bind.annotation.ModelAttribute;
         import org.springframework.web.bind.annotation.PostMapping;
         import org.springframework.web.bind.annotation.RequestMapping;
-
         import java.util.ArrayList;
         import java.util.Date;
 
@@ -22,7 +21,30 @@ public class TodomonController {
         this.taskRepo = taskRepo;
     }
 
-    //Tästä alkaa Päivin lisäykset
+    @RequestMapping(value = "/")
+    public String home() {
+        return "home";
+    }
+
+    @RequestMapping(value = "/user")
+    public String user() {
+        return "annintesti";
+    }
+
+    @RequestMapping(value = "/admin")
+    public String admin() {
+        return "annintesti";
+    }
+
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "customlogin";
+    }
+
+    @RequestMapping(value = "/403")
+    public String Error403() {
+        return "403";
+    }
 
     @RequestMapping("/")
     public String paasivu(Model model) {
@@ -50,6 +72,6 @@ public class TodomonController {
     }
     */
 
+    // Käyttäjähallinta & autentikointi
 
 }
-
