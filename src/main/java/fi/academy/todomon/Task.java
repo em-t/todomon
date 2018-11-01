@@ -10,7 +10,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String task;
+    private String taskName;
     private String description;
 
     @ManyToOne
@@ -22,14 +22,14 @@ public class Task {
     private String category;
 
     //constructor simple formille
-    public Task(String task, String description, String category) {
-        this.task = task;
+    public Task(String taskName, String description, String category) {
+        this.taskName = taskName;
         this.description = description;
         this.category = category;
     }
 
-    public Task(String task, String description, User users, Date due, Integer rank, Integer state, String category) {
-        this.task = task;
+    public Task(String taskName, String description, User user, Date due, Integer rank, Integer state, String category) {
+        this.taskName = taskName;
         this.description = description;
         this.user = user;
         this.due = due;
@@ -45,7 +45,7 @@ public class Task {
     public String toString() {
         return String.format(
                 "Tasks[task=%d, description='%s', category='%s']",
-                task, description, category);
+                taskName, description, category);
     }
 
     public Integer getId() {
@@ -56,12 +56,16 @@ public class Task {
         this.id = id;
     }
 
-    public String getTask() {
-        return task;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public String getDescription() {
@@ -72,11 +76,7 @@ public class Task {
         this.description = description;
     }
 
-    public User getUsers() {
-        return user;
-    }
-
-    public void setUser(User users) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -111,6 +111,8 @@ public class Task {
     public void setCategory(String category) {
         this.category = category;
     }
+
+
 
 
 }

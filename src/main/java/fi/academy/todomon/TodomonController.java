@@ -82,7 +82,7 @@ public class TodomonController {
 
     @PostMapping("/luotaski")
     public String luoUusiTask(@ModelAttribute Task requestItem) {
-        Task taski = new Task(requestItem.getTask(), requestItem.getDescription(), requestItem.getCategory());
+        Task taski = new Task(requestItem.getTaskName(), requestItem.getDescription(), requestItem.getCategory());
         String username = getCurrentUsername();
         Optional<User> optUser = userRepo.findById(username);
         User user = optUser.get();
