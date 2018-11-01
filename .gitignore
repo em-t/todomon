@@ -11,7 +11,8 @@
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
+.out
 *.iws
 *.iml
 *.ipr
