@@ -5,10 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,11 +50,33 @@ public class TodomonController {
     }
 
     // uusi main sivu, ohjaa draggauksen mahdollistavaan sivuun
-    @RequestMapping(value = "/main")
-    public String homepage(Model model) {
+    @RequestMapping(value = "/main", method = { RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE})
+    public String homepage(@RequestParam(value = "taskId", required = false) String currentId,
+                           @RequestParam(value = "state", required = false) String newState, Model model) {
         String username = getCurrentUsername();
         Optional<Users> optUser = usersRepo.findById(username);
         Users user = optUser.get();
+
+        // tästä alkaa put & delete testit
+        if (null != currentId && null != newState) {
+            if ("4".equals(newState)) {
+                try {
+                    taskRepo.removeById(Integer.parseInt(currentId));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if ("1".equals(newState) || "2".equals(newState) || "3".equals(newState)) {
+                // TODO: testaa!!
+                try {
+                    taskRepo.updateUserSetStateForId(Integer.parseInt(newState), Integer.parseInt(currentId));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        // -------------------------------
 
         Iterable<Tasks> taskipool = taskRepo.findByStateAndUsers(0, user);
         Iterable<Tasks> toDo = taskRepo.findByStateAndUsers(1, user);
@@ -115,7 +134,7 @@ public class TodomonController {
         return "redirect:/main";
     }
 
-    @PostMapping("/registration")
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String luoUusiKayttaja(@ModelAttribute Users requestItem) {
         Users user = new Users(requestItem.getUsername(), requestItem.getPassword());
         usersRepo.save(user);

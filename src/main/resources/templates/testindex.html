@@ -50,7 +50,7 @@
             </div>
             <div id="todo-box" class="todo-box-drop-area droppable-box todo-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                 <div th:each="task : ${tasks1}">
-                    <p th:id="'task1' + ${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="1" th:text="${task.task}"></p>
+                    <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="1" th:text="${task.task}"></p>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             </div>
             <div id="doing-box" class="todo-box-drop-area droppable-box doing-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                 <div th:each="task : ${tasks2}">
-                    <p th:id="'task2' + ${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="2" th:text="${task.task}"></p>
+                    <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="2" th:text="${task.task}"></p>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             </div>
             <div id="done-box" class="todo-box-drop-area droppable-box done-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
             <div th:each="task : ${tasks3}">
-                <p th:id="'task3' + ${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="3" th:text="${task.task}"></p>
+                <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="3" th:text="${task.task}"></p>
             </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
     <div class="grid-container-task-pool">
         <div class="pool-box droppable-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
             <div th:each="task : ${tasks0}">
-                <p th:id="'task0' + ${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="0" th:text="${task.task}"></p>
+                <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="0" th:text="${task.task}"></p>
             </div>
             <p id="task1" draggable="true" ondragstart="dragstart_handler(event);" data-state="0">Task 1</p>
             <p id="task2" draggable="true" ondragstart="dragstart_handler(event);" data-state="0">Task 2</p>
@@ -94,21 +94,21 @@
         <div class="todoForm">
             <form class="form-put" th:action="@{/luotaski}" th:object="${newitem}" method="POST">
                 <div class="form-group">
-                    <label for="inputItemName" class="col-sm-2">Taskin nimi</label>
-                    <div class="col-sm-10">
+                    <label for="inputItemName">Taskin nimi</label>
+                    <div>
                         <input type="text" th:field="*{task}" class="form-control" id="inputItemName" placeholder="Taskin nimi"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputDescription" class="col-sm-2">Taskin kuvaus</label>
-                    <div class="col-sm-10">
-                        <input type="text" th:field="*{description}" class="form-control" id="inputDescription" placeholder="Taskin nimi"/>
+                    <label for="inputDescription">Taskin kuvaus</label>
+                    <div>
+                        <input type="text" th:field="*{description}" class="form-control" id="inputDescription" placeholder="Taskin kuvaus"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputCategory" class="col-sm-2">Taskin kategoria</label>
-                    <div class="col-sm-10">
+                    <label for="inputCategory">Taskin kategoria</label>
+                    <div>
                         <input type="text" th:field="*{category}" class="form-control" id="inputCategory" placeholder="Taskin kategoria"/>
                     </div>
                 </div>
