@@ -52,10 +52,26 @@
             </div>
             <div id="todo-box" class="todo-box-drop-area droppable-box todo-box" ondrop="drop_handler(event);"
                  ondragover="dragover_handler(event);">
-                <div th:each="task : ${tasks1}">
-                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);" data-state="1"
-                       th:text="${task.task}"></p>
+
+                <div class="table-buffer" th:each="task : ${tasks1}">
+                    <table th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);"
+                           data-state="1">
+                        <thead>
+                        <tr>
+                            <th><span class="task-name-text" th:text="${task.task}"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="task-desc-text" th:text="${task.description}"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" th:text="${task.category}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
         <div class="doing-box grid-doing-box">
@@ -64,9 +80,23 @@
             </div>
             <div id="doing-box" class="todo-box-drop-area droppable-box doing-box" ondrop="drop_handler(event);"
                  ondragover="dragover_handler(event);">
-                <div th:each="task : ${tasks2}">
-                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);" data-state="2"
-                       th:text="${task.task}"></p>
+                <div class="table-buffer" th:each="task : ${tasks2}">
+                    <table th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);"
+                           data-state="2">
+                        <thead>
+                        <tr>
+                            <th><span class="task-name-text" th:text="${task.task}"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="task-desc-text" th:text="${task.description}"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" th:text="${task.category}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -76,9 +106,24 @@
             </div>
             <div id="done-box" class="todo-box-drop-area droppable-box done-box" ondrop="drop_handler(event);"
                  ondragover="dragover_handler(event);">
-                <div th:each="task : ${tasks3}">
-                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);" data-state="3"
-                       th:text="${task.task}"></p>
+
+                <div class="table-buffer" th:each="task : ${tasks3}">
+                    <table th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);"
+                           data-state="3">
+                        <thead>
+                        <tr>
+                            <th><span class="task-name-text" th:text="${task.task}"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="task-desc-text" th:text="${task.description}"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" th:text="${task.category}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -93,10 +138,25 @@
             <div class="pool-box-header">
                 <h2>LATER</h2>
             </div>
-            <div class="pool-box droppable-box todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
-                <div th:each="task : ${tasks0}">
-                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);"
-                       data-state="0" th:text="${task.task}"></p>
+            <div class="pool-box droppable-box todo-box-drop-area" ondrop="drop_handler(event);"
+                 ondragover="dragover_handler(event);">
+                <div class="table-buffer" th:each="task : ${tasks0}">
+                    <table th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);"
+                            data-state="0">
+                        <thead>
+                        <tr>
+                            <th><span class="task-name-text" th:text="${task.task}"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="task-desc-text" th:text="${task.description}"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge" th:text="${task.category}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -104,7 +164,8 @@
             <div class="trash-box-header">
                 <h2>BYE!</h2>
             </div>
-            <div class="trash-box todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <div class="trash-box todo-box-drop-area" ondrop="drop_handler(event);"
+                 ondragover="dragover_handler(event);">
 
             </div>
         </div>

@@ -162,10 +162,29 @@ body {
     padding: 10px;
 }
 
-h2 {
+h2, h4 {
     font-family: 'Concert One', cursive;
 }
 
-.todo-text {
+/*table[draggable] {
+    border: 1px solid black;
+}*/
+
+.table-buffer {
     padding: 5px;
+}
+
+th, td {
+    padding: 2px;
+}
+
+.task-name-text {
+    color: darkcyan;
+    font-size: 16px;
+    font-family: 'Concert One', cursive;
+}
+
+.task-desc-text {
+    font-style: italic;
+    font-size: 12px;
 }
