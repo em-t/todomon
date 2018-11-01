@@ -50,9 +50,11 @@
             <div class="todo-box-header">
                 <h2>TO DO</h2>
             </div>
-            <div id="todo-box" class="todo-box-drop-area droppable-box todo-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <div id="todo-box" class="todo-box-drop-area droppable-box todo-box" ondrop="drop_handler(event);"
+                 ondragover="dragover_handler(event);">
                 <div th:each="task : ${tasks1}">
-                    <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="1" th:text="${task.task}"></p>
+                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);" data-state="1"
+                       th:text="${task.task}"></p>
                 </div>
             </div>
         </div>
@@ -60,9 +62,11 @@
             <div class="todo-box-header">
                 <h2>DOING</h2>
             </div>
-            <div id="doing-box" class="todo-box-drop-area droppable-box doing-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <div id="doing-box" class="todo-box-drop-area droppable-box doing-box" ondrop="drop_handler(event);"
+                 ondragover="dragover_handler(event);">
                 <div th:each="task : ${tasks2}">
-                    <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="2" th:text="${task.task}"></p>
+                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);" data-state="2"
+                       th:text="${task.task}"></p>
                 </div>
             </div>
         </div>
@@ -70,25 +74,39 @@
             <div class="todo-box-header">
                 <h2>DONE</h2>
             </div>
-            <div id="done-box" class="todo-box-drop-area droppable-box done-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
-            <div th:each="task : ${tasks3}">
-                <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="3" th:text="${task.task}"></p>
-            </div>
+            <div id="done-box" class="todo-box-drop-area droppable-box done-box" ondrop="drop_handler(event);"
+                 ondragover="dragover_handler(event);">
+                <div th:each="task : ${tasks3}">
+                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);" data-state="3"
+                       th:text="${task.task}"></p>
+                </div>
             </div>
         </div>
     </div>
-<style>
-    p[draggable]{border:1px solid black;}
-</style>
-    <div class="grid-container-task-pool">
-        <div class="pool-box droppable-box" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
-            <div th:each="task : ${tasks0}">
-                <p th:id="${task.id}"  draggable="true" ondragstart="dragstart_handler(event);" data-state="0" th:text="${task.task}"></p>
+    <style>
+        p[draggable] {
+            border: 1px solid black;
+        }
+    </style>
+    <div class="grid-container-pool-and-trash">
+        <div class="grid-pool-box">
+            <div class="pool-box-header">
+                <h2>LATER</h2>
             </div>
-            <p id="task1" draggable="true" ondragstart="dragstart_handler(event);" data-state="0">Task 1</p>
-            <p id="task2" draggable="true" ondragstart="dragstart_handler(event);" data-state="0">Task 2</p>
-            <p id="task3" draggable="true" ondragstart="dragstart_handler(event);" data-state="0">Task 3</p>
-            <p id="task4" draggable="true" ondragstart="dragstart_handler(event);" data-state="0">Task 4</p>
+            <div class="pool-box droppable-box todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+                <div th:each="task : ${tasks0}">
+                    <p th:id="${task.id}" class="todo-text" draggable="true" ondragstart="dragstart_handler(event);"
+                       data-state="0" th:text="${task.task}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="grid-trash">
+            <div class="trash-box-header">
+                <h2>BYE!</h2>
+            </div>
+            <div class="trash-box todo-box-drop-area" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+
+            </div>
         </div>
     </div>
 
@@ -98,20 +116,23 @@
                 <div class="form-group">
                     <label for="inputItemName">Taskin nimi</label>
                     <div>
-                        <input type="text" th:field="*{task}" class="form-control" id="inputItemName" placeholder="Taskin nimi"/>
+                        <input type="text" th:field="*{task}" class="form-control" id="inputItemName"
+                               placeholder="Taskin nimi"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputDescription">Taskin kuvaus</label>
                     <div>
-                        <input type="text" th:field="*{description}" class="form-control" id="inputDescription" placeholder="Taskin kuvaus"/>
+                        <input type="text" th:field="*{description}" class="form-control" id="inputDescription"
+                               placeholder="Taskin kuvaus"/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputCategory">Taskin kategoria</label>
                     <div>
-                        <input type="text" th:field="*{category}" class="form-control" id="inputCategory" placeholder="Taskin kategoria"/>
+                        <input type="text" th:field="*{category}" class="form-control" id="inputCategory"
+                               placeholder="Taskin kategoria"/>
                     </div>
                 </div>
 

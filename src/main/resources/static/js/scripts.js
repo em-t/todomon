@@ -36,6 +36,10 @@ function drop_handler(ev) {
         console.log("done box");
         location.href="http://localhost:8080/main?taskId=" + currentId + "&state=3";
     }
+    if(ev.target.classList.contains("trash-box")) {
+        console.log("trash box");
+        location.href="http://localhost:8080/main?taskId=" + currentId + "&state=4";
+    }
     // TODO: tähän "roskis" box jonka state=4
     console.log(ev.dataTransfer.getData("current-state"));
     if(ev.target.classList.contains("droppable-box")){

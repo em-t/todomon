@@ -65,7 +65,7 @@ public class TodomonController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if ("1".equals(newState) || "2".equals(newState) || "3".equals(newState)) {
+            } else if ("0".equals(newState) || "1".equals(newState) || "2".equals(newState) || "3".equals(newState)) {
                 // TODO: testaa!!
                 try {
                     taskRepo.updateUserSetStateForId(Integer.parseInt(newState), Integer.parseInt(currentId));

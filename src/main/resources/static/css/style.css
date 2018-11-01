@@ -16,6 +16,7 @@ body {
     "todo-boxes"
     "task-pool"
     "add-form";
+    padding-bottom: 10px;
 }
 
 .grid-container-navbar {
@@ -95,10 +96,24 @@ body {
     }
 }
 
-.grid-container-task-pool {
+.grid-container-pool-and-trash {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 2fr 1fr;
+}
+
+.grid-pool-box {
     background-color: white;
     grid-area: task-pool;
     padding: 10px;
+    grid-column: 1 / 2;
+}
+
+.grid-trash {
+    background-color: white;
+    grid-area: trash;
+    padding: 10px;
+    grid-column: 2 / 3;
 }
 
 .grid-container-add-form {
@@ -119,8 +134,22 @@ body {
 
 .pool-box {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
+    padding: 10px;
+}
+
+.pool-box-header {
+    display: grid;
+    justify-items: center;
+}
+
+.trash-box-header {
+    display: grid;
+    justify-items: center;
+}
+
+.trash-box {
     padding: 10px;
 }
 
@@ -135,4 +164,8 @@ body {
 
 h2 {
     font-family: 'Concert One', cursive;
+}
+
+.todo-text {
+    padding: 5px;
 }
