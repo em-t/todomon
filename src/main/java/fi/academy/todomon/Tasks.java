@@ -7,6 +7,7 @@ import java.util.Date;
 @Table(name = "tasks")
 public class Tasks {
 
+    // TODO: refaktoroi luokan nimet
     @Id
     //  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tasks_id_seq")
     // @SequenceGenerator(name = "tasks_id_seq", sequenceName = "tasks_id_seq", allocationSize = 1)

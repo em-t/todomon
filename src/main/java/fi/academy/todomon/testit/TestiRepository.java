@@ -1,8 +1,6 @@
-package fi.academy.todomon;
+package fi.academy.todomon.testit;
 
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
 
 public interface TestiRepository extends CrudRepository<Testitable, Integer> {
 

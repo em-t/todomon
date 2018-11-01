@@ -9,7 +9,7 @@ public class Users {
 
     @Id
     private String username;
-   @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users")
     public List<Tasks> tasks;
 
     private String password;

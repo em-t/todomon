@@ -13,7 +13,8 @@ function dragover_handler(ev) {
 
 function drop_handler(ev) {
     ev.preventDefault();
-    // Get the id of the target and add the moved element to the target's DOM
+    // Get the id of the target and add the moved element to the target's DOMö
+    location.href="http://localhost:8080/main?taskid=12&state=0";
     console.log(ev.dataTransfer.getData("current-state"));
     var data = ev.dataTransfer.getData("text/plain");
     console.dir(ev.target);

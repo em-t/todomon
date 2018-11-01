@@ -52,7 +52,31 @@ public class TodomonController {
         return "403";
     }
 
-    @RequestMapping("/main")
+    // uusi main sivu, ohjaa draggauksen mahdollistavaan sivuun
+    @RequestMapping(value = "/main")
+    public String homepage(Model model) {
+        String username = getCurrentUsername();
+        Optional<Users> optUser = usersRepo.findById(username);
+        Users user = optUser.get();
+
+        Iterable<Tasks> taskipool = taskRepo.findByStateAndUsers(0, user);
+        Iterable<Tasks> toDo = taskRepo.findByStateAndUsers(1, user);
+        Iterable<Tasks> inProgress = taskRepo.findByStateAndUsers(2, user);
+        Iterable<Tasks> doneTasks = taskRepo.findByStateAndUsers(3, user);
+
+        Iterable<Tasks> taskit;
+        taskit = taskRepo.findByUsers(user);
+        model.addAttribute("newitem", new Tasks()); //paikka uudelle taskille, joka tulee formista pooliin
+        model.addAttribute("tasks0", taskipool);
+        model.addAttribute("tasks1", toDo);
+        model.addAttribute("tasks2", inProgress);
+        model.addAttribute("tasks3", doneTasks);
+
+        return "testindex";
+    }
+
+    // vanha main-sivu, ohjaa taulukkomuotoiseen näkymään
+    @RequestMapping("/vanhamain")
     public String paasivu(Model model) {
         String username = getCurrentUsername();
         Optional<Users> optUser = usersRepo.findById(username);
@@ -97,6 +121,8 @@ public class TodomonController {
         usersRepo.save(user);
         return "home";
     }
+
+
 
     public String getCurrentUsername() {
 

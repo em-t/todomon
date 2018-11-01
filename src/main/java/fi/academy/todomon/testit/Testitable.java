@@ -1,4 +1,4 @@
-package fi.academy.todomon;
+package fi.academy.todomon.testit;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
