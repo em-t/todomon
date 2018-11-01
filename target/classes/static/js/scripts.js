@@ -12,36 +12,36 @@ function dragover_handler(ev) {
 }
 
 function drop_handler(ev) {
+    // TODO: tarkista että vanhat toiminnallisuudet kuten "sortable" eivät häviä uusien ominaisuuksien myötä
     ev.preventDefault();
     // Get the id of the target and add the moved element to the target's DOMö
-    location.href="http://localhost:8080/main?taskid=12&state=0";
     console.log(ev.dataTransfer.getData("current-state"));
-    var data = ev.dataTransfer.getData("text/plain");
+    var currentId = ev.dataTransfer.getData("text/plain");
     console.dir(ev.target);
     console.dir(ev.target.classList.contains("droppable-box"));
 
     if(ev.target.classList.contains("pool-box")) {
-        ev.dataTransfer.setData("current-state", "0");
-        paskafunktio();
-        console.log("pool box")
+        console.log("pool box");
+        location.href="http://localhost:8080/main?taskId=" + currentId + "&state=0";
     }
     if(ev.target.classList.contains("todo-box")) {
-        ev.dataTransfer.setData("current-state", "1");
-        console.log("todo box")
+        console.log("todo box");
+        location.href="http://localhost:8080/main?taskId=" + currentId + "&state=1";
     }
     if(ev.target.classList.contains("doing-box")) {
-        ev.dataTransfer.setData("current-state", "2");
-        console.log("doing box")
+        console.log("doing box");
+        location.href="http://localhost:8080/main?taskId=" + currentId + "&state=2";
     }
     if(ev.target.classList.contains("done-box")) {
-        ev.dataTransfer.setData("current-state", "3");
-        console.log("done box")
+        console.log("done box");
+        location.href="http://localhost:8080/main?taskId=" + currentId + "&state=3";
     }
+    // TODO: tähän "roskis" box jonka state=4
     console.log(ev.dataTransfer.getData("current-state"));
     if(ev.target.classList.contains("droppable-box")){
-        ev.target.appendChild(document.getElementById(data));
+        ev.target.appendChild(document.getElementById(currentId));
     } else {
-        ev.target.parentNode.appendChild(document.getElementById(data));
+        ev.target.parentNode.appendChild(document.getElementById(currentId));
     }
     // välitä esim. task id rest-palvelulle
     // esim. @{"/changestate"}
