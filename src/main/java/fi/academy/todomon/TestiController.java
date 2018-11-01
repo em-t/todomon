@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
+import java.util.Optional;
 
 @Controller
 public class TestiController {
@@ -28,5 +31,12 @@ public class TestiController {
         System.out.println(t3);
         return "testindex";
     }
-    
+
+/*    @PutMapping("/put/{id}")
+    public String haisevaPaska(Model model) {
+        Optional<Testitable> opt = testirepo.findById(id);
+        Testitable task = opt.get();
+
+        return "testindex";
+    }*/
 }
