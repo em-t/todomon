@@ -23,7 +23,14 @@ body {
 }
 
 .grid-container-todomon-image {
+    background-color: white;
     grid-area: todomon-image;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.img-todomon {
+    grid-column: 2 / 3;
 }
 
 .grid-container-todo-boxes {
