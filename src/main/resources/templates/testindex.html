@@ -164,9 +164,9 @@
             <div class="trash-box-header">
                 <h2>BYE!</h2>
             </div>
-            <div class="trash-box todo-box-drop-area" ondrop="drop_handler(event);"
-                 ondragover="dragover_handler(event);">
-
+            <div class="trash-box-outer todo-box-drop-area">
+                <img src="#" alt="trash" class="img-roskis trash-box" th:src="@{'/images/roskis.png'}" ondrop="drop_handler(event);"
+                ondragover="dragover_handler(event);"/>
             </div>
         </div>
     </div>
