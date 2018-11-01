@@ -5,16 +5,25 @@ import java.util.List;
 
 
 @Entity
-public class Users {
+@Table(name = "users")
+public class User {
 
     @Id
     private String username;
-    @OneToMany(mappedBy = "users")
-    public List<Tasks> tasks;
+    @OneToMany(mappedBy = "user")
+    public List<Task> tasks;
 
     private String password;
     private Integer level;
     private Integer mon; //todomonin type
+
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getUsername() {
         return username;
@@ -24,11 +33,11 @@ public class Users {
         this.username = username;
     }
 
-    public List<Tasks> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Tasks> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -56,11 +65,4 @@ public class Users {
         this.mon = mon;
     }
 
-    public Users() {
-    }
-
-    public Users(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 }

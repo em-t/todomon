@@ -2,6 +2,6 @@ package fi.academy.todomon;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UsersRepository extends CrudRepository<Users, String> {
+public interface UserRepository extends CrudRepository<User, String> {
 
 }

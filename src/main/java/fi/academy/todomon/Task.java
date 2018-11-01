@@ -5,12 +5,9 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tasks")
-public class Tasks {
+public class Task {
 
-    // TODO: refaktoroi luokan nimet
     @Id
-    //  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tasks_id_seq")
-    // @SequenceGenerator(name = "tasks_id_seq", sequenceName = "tasks_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String task;
@@ -18,23 +15,32 @@ public class Tasks {
 
     @ManyToOne
     @JoinColumn(name = "username")
-    public Users users;
-    //private Integer userId; //foreign key
-
-
+    public User user;
     private Date due;
     private Integer rank; //taskin vaikeus
-    private Integer state; //esim. todo, doing, done
+    private Integer state; //todo, doing, done, delete
     private String category;
 
     //constructor simple formille
-    public Tasks(String task, String description, String category) {
+    public Task(String task, String description, String category) {
         this.task = task;
         this.description = description;
         this.category = category;
     }
 
-    //väliaikainen toString että saa edes jotain näkymään
+    public Task(String task, String description, User users, Date due, Integer rank, Integer state, String category) {
+        this.task = task;
+        this.description = description;
+        this.user = user;
+        this.due = due;
+        this.rank = rank;
+        this.state = state;
+        this.category = category;
+    }
+
+    public Task() {
+    }
+
     @Override
     public String toString() {
         return String.format(
@@ -66,22 +72,14 @@ public class Tasks {
         this.description = description;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUser(User users) {
+        this.user = user;
     }
 
-    /*   public Integer getUserId() {
-           return userId;
-       }
-
-       public void setUserId(Integer userId) {
-           this.userId = userId;
-       }
-   */
     public Date getDue() {
         return due;
     }
@@ -112,19 +110,6 @@ public class Tasks {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Tasks(String task, String description, Users users, Date due, Integer rank, Integer state, String category) {
-        this.task = task;
-        this.description = description;
-        this.users = users;
-        this.due = due;
-        this.rank = rank;
-        this.state = state;
-        this.category = category;
-    }
-
-    public Tasks() {
     }
 
 
