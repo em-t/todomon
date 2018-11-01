@@ -134,7 +134,7 @@ public class TodomonController {
         return "redirect:/main";
     }
 
-    @PostMapping("/registration")
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String luoUusiKayttaja(@ModelAttribute Users requestItem) {
         Users user = new Users(requestItem.getUsername(), requestItem.getPassword());
         usersRepo.save(user);
