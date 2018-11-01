@@ -9,24 +9,24 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 
-public interface TasksRepository extends CrudRepository<Tasks, Integer> {
+public interface TaskRepository extends CrudRepository<Task, Integer> {
 
-    List<Tasks> findByStateAndUsers(Integer state, Users user);
+    List<Task> findByStateAndUser(Integer state, User user);
 
-    Iterable<Tasks> findByUsers(Users user);
-
-    @Transactional
-    List<Tasks> removeByState(Integer state);
+    Iterable<Task> findByUser(User user);
 
     @Transactional
-    List<Tasks> removeByUsersAndId(Users username, Integer id);
+    List<Task> removeByState(Integer state);
+
+    @Transactional
+    List<Task> removeByUserAndId(User username, Integer id);
 
     @Transactional
     void removeById(Integer id);
 
     @Transactional
     @Modifying
-    @Query("UPDATE Tasks t SET t.state = :state WHERE t.id = :id")
+    @Query("UPDATE Task t SET t.state = :state WHERE t.id = :id")
     void updateUserSetStateForId(@Param("state") Integer state, @Param("id") Integer id);
 
 }
