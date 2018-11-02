@@ -19,9 +19,6 @@ public interface TaskRepository extends CrudRepository<Task, Integer> {
     List<Task> removeByState(Integer state);
 
     @Transactional
-    List<Task> removeByUserAndId(User username, Integer id);
-
-    @Transactional
     void removeById(Integer id);
 
     @Transactional
