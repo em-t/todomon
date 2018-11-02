@@ -16,6 +16,7 @@ public class User {
     private String password;
     private Integer level;
     private Integer mon; //todomonin type
+    private boolean enabled;
 
     public User() {
     }

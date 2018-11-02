@@ -20,6 +20,13 @@ function drop_handler(ev) {
     console.dir(ev.target);
     console.dir(ev.target.classList.contains("droppable-box"));
 
+    console.log(ev.dataTransfer.getData("current-state"));
+    if(ev.target.classList.contains("droppable-box")){
+        ev.target.appendChild(document.getElementById(currentId));
+    } else {
+        ev.target.parentNode.appendChild(document.getElementById(currentId));
+    }
+
     if(ev.target.classList.contains("pool-box")) {
         console.log("pool box");
         location.href="http://localhost:8080/main?taskId=" + currentId + "&state=0";
@@ -40,22 +47,6 @@ function drop_handler(ev) {
         console.log("trash box");
         location.href="http://localhost:8080/main?taskId=" + currentId + "&state=4";
     }
-    // TODO: tähän "roskis" box jonka state=4
-    console.log(ev.dataTransfer.getData("current-state"));
-    if(ev.target.classList.contains("droppable-box")){
-        ev.target.appendChild(document.getElementById(currentId));
-    } else {
-        ev.target.parentNode.appendChild(document.getElementById(currentId));
-    }
-    // välitä esim. task id rest-palvelulle
-    // esim. @{"/changestate"}
 
 
-    // TODO: lisää tähän jotain mikä tarkistaa että oikean tyyppinen target
-    // TODO: tai - tarkista ettei ole target-parentin child
-
-}
-
-function paskafunktio() {
-    // ottaa yhteyden put-requestiin controllerissa
 }
