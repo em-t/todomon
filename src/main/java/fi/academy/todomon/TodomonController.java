@@ -42,7 +42,6 @@ public class TodomonController {
         return "403";
     }
 
-    // uusi main sivu, ohjaa draggauksen mahdollistavaan sivuun
     @RequestMapping(value = "/main", method = { RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE})
     public String homepage(@RequestParam(value = "taskId", required = false) String currentId,
                            @RequestParam(value = "state", required = false) String newState, Model model) {
@@ -71,7 +70,7 @@ public class TodomonController {
         Iterable<Task> inProgress = taskRepo.findByStateAndUser(2, user);
         Iterable<Task> doneTasks = taskRepo.findByStateAndUser(3, user);
 
-        model.addAttribute("newitem", new Task()); //paikka uudelle taskille, joka tulee formista pooliin
+        model.addAttribute("newitem", new Task());
         model.addAttribute("tasks0", taskipool);
         model.addAttribute("tasks1", toDo);
         model.addAttribute("tasks2", inProgress);
@@ -117,6 +116,4 @@ public class TodomonController {
         return username;
 
     }
-
-
 }

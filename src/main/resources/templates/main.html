@@ -189,11 +189,17 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class = "form-group">
                     <label for="inputCategory">Taskin kategoria</label>
                     <div>
-                        <input type="text" th:field="*{category}" class="form-control" id="inputCategory"
-                               placeholder="Taskin kategoria"/>
+                        <select name = "kategoriat" th:field="*{category}" class="form-control" id="inputCategory"
+                                placeholder="Taskin kategoria"/>
+                        <option value="häröily">häröily</option>
+                        <option value="sekoilu">sekoilu</option>
+                        <option value="rapuilu">rapuilu</option>
+                        <option value="härdelli">härdelli</option>
+                        <option value="kaaos">kaaos</option>
+                        </select>
                     </div>
                 </div>
 
@@ -203,7 +209,7 @@
 
         </div>
     </div>
-
+</br>
 </div>
 
 </body>
