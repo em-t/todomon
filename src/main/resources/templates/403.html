@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
 <head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}"/>
     <title>403 Access Denied</title>
 </head>
 <body>
 <div>
     <div class="grid-container-outer">
-            <img alt="403" th:src="@{'/images/roskis.png'}"/>
-            <h1>Access Denied</h1>
-            <p>You not have permission to view this resource.</p>
-            <a th:href="@{/main}">Return</a>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
-        </div>
+        <img alt="403" th:src="@{'/images/roskis.png'}"/>
+        <h1>Access Denied</h1>
+        <p>You not have permission to view this resource.</p>
+        <a th:href="@{/main}">Return</a>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
     </div>
+</div>
 </div>
 </form>
 </body>
